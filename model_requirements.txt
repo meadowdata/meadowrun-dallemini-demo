@@ -1,0 +1,19 @@
+# for s3 caching:
+boto3
+# from dalle-playground
+-f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+jax==0.3.14
+jaxlib==0.3.14+cuda11.cudnn82
+flax==0.5.0
+git+https://github.com/huggingface/transformers.git
+git+https://github.com/patil-suraj/vqgan-jax.git
+git+https://github.com/borisdayma/dalle-mini.git
+tqdm
+# gild-3-xl
+git+https://github.com/hrichardlee/glid-3-xl
+dalle_pytorch
+git+https://github.com/hrichardlee/latent-diffusion
+# SwinIR
+git+https://github.com/hrichardlee/SwinIR
+opencv-python
+timm
