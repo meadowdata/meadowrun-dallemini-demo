@@ -8,7 +8,7 @@ generate images.
 Examples of images generated with this notebook of "a snake floating in clouds in the style of [van gogh|rene magritte|escher|gustav klimt]"
 ![Generated images of snakes floating through clouds](snakes-floating-through-clouds-composite.png)
 
-To run this notebook:
+To run this notebook, follow the [accompanying blog post](https://medium.com/p/e8aef6f974c1). Or, following the quick start below:
 
 ```shell
 # Clone this repo and create the local environment
