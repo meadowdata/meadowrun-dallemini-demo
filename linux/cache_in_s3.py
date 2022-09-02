@@ -31,10 +31,10 @@ def download_pretrained_dallemini_cache_in_s3(model_version_str: str, s3_bucket:
 
 def download_pretrained_dallemini_from_s3(model_version: str, s3_bucket: str, s3_bucket_region: str) -> str:
     s3 = boto3.client("s3", region_name=s3_bucket_region)
-    local_dir = os.path.join("/meadowrun/machine_cache", model_version)
+    local_dir = os.path.join("/var/meadowrun/machine_cache", model_version)
     os.makedirs(local_dir, exist_ok=True)
     for file in s3.list_objects(Bucket=s3_bucket)["Contents"]:
-        local_path = os.path.join("/meadowrun/machine_cache", file["Key"])
+        local_path = os.path.join("/var/meadowrun/machine_cache", file["Key"])
         if file["Key"].startswith(f"{model_version}/") and not os.path.exists(local_path):
             print(f"Downloading {file['Key']}")
             s3.download_file(s3_bucket, file["Key"], local_path)
@@ -65,13 +65,13 @@ def download_pretrained_gild3xl_cache_in_s3(s3_bucket: str, s3_bucket_region: st
 def download_pretrained_glid3xl_from_s3(s3_bucket: str, s3_bucket_region: str):
     s3 = boto3.client("s3", region_name=s3_bucket_region)
 
-    clip_local_dir = os.path.join("/meadowrun/machine_cache", _CLIP_DIR)
+    clip_local_dir = os.path.join("/var/meadowrun/machine_cache", _CLIP_DIR)
     os.makedirs(clip_local_dir, exist_ok=True)
     clip_local_path = os.path.join(clip_local_dir, _CLIP_FILE)
     if not os.path.exists(clip_local_path):
         s3.download_file(s3_bucket, f"{_CLIP_DIR}/{_CLIP_FILE}", clip_local_path)
 
-    glid3xl_local_dir = os.path.join("/meadowrun/machine_cache", _GLID_3_XL_DIR)
+    glid3xl_local_dir = os.path.join("/var/meadowrun/machine_cache", _GLID_3_XL_DIR)
     os.makedirs(glid3xl_local_dir, exist_ok=True)
     for file_name in _GLID_3_XL_FILES:
         local_path = os.path.join(glid3xl_local_dir, file_name)
@@ -97,7 +97,7 @@ def download_pretrained_swinir_cache_in_s3(s3_bucket: str, s3_bucket_region: str
 def download_pretrained_swinir_from_s3(s3_bucket: str, s3_bucket_region: str):
     s3 = boto3.client("s3", region_name=s3_bucket_region)
 
-    swinir_local_dir = os.path.join("/meadowrun/machine_cache", _SWINIR_DIR)
+    swinir_local_dir = os.path.join("/var/meadowrun/machine_cache", _SWINIR_DIR)
     os.makedirs(swinir_local_dir, exist_ok=True)
     local_path = os.path.join(swinir_local_dir, _SWINIR_FILE)
     if not os.path.exists(local_path):
